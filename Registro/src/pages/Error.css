@@ -1,0 +1,41 @@
+.error-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 2rem;
+
+    
+}
+
+.error-page {
+    text-align: center;
+    display: flex;
+    flex-direction:row;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    
+}
+
+    
+
+.error-gear {
+    margin: -25px;
+    animation: rotate 8s linear infinite; /* Aplicar animación */
+}
+
+.error1 {
+    width: 150px;
+    bottom: 10px;
+    animation-direction: reverse; /* Gira en dirección normal */
+}
+
+
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}

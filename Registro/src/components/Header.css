@@ -1,10 +1,14 @@
 header {
     min-height: 20vh;
     width: 100vw;
-    background-color: rgb(49, 129, 145);
+    background: linear-gradient(225deg, #ff7edf, #7a7bff, #7afff5);
+    background-size: 600% 600%;
+    animation: GradientMove 16s ease infinite;
+    color: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
+    
 }
 
 .titleHeaderBlack {
@@ -32,16 +36,15 @@ header {
 
 .logo {
     width: 100px;
+    border-radius: 25%;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
 }
 
 .iconNav {
-    width: 60px;
+    width: 70px;
 }
 
-.iconNav.home {
-    width: 60px;
-    transform: scale(1.2);
-}
+
 
 nav {
     display: flex;
@@ -55,20 +58,21 @@ nav {
 }
 
 .iconLogout {
-    transform: scale(0.8);
+    
     width: 70px;
-    height: 70px;
-    object-fit: cover;
-    border: solid 7px black;
-    border-radius: 50%;
+    
+    
+   
+    
 }
 
 .profileCircle {
-    width: 60px;
-    height: 60px;
+    width: 53px;
+    height: 53px;
     object-fit: cover;
-    border-radius: 50%;
-    border: solid black 6px;
+    border-radius: 10%;
+    border: solid black 2px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
 }
 
 a {
@@ -78,9 +82,9 @@ a {
 }
 
 .iconDashBoard {
-    width: 60px;
-    height: 60px;
-    border-radius: 50px;
+    width: 70px;
+    
+    
 }
 
 @media (max-width: 700px) {
@@ -96,3 +100,43 @@ a {
         width: 263px;
     }
 }
+@keyframes GradientMove {
+    0% {background-position: 0% 50%}
+    50% {background-position: 100% 50%}
+    100% {background-position: 0% 50%}
+}
+
+.tooltip-text1 {
+    visibility: hidden;
+    width: auto;
+    background-color: black;
+    color: white;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  .iconNav:hover + .tooltip-text1 {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .profileCircle:hover {
+    background-color: #6762b6;
+    transition: 0.3s;
+    transform: scale(1.01);
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+  }
+
+  .profileCircle:hover + .tooltip-text1 {
+    visibility: visible;
+    opacity: 1;
+  }

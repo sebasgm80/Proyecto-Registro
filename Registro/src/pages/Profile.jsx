@@ -1,10 +1,12 @@
-import "./Profile.css";
+import { Outlet } from 'react-router-dom'
+import './Profile.css'
+import { NavProfile } from '../components'
 
 export const Profile = () => {
-
     return (
         <>
-            <p>profile</p>
+            <NavProfile />
+            <Outlet />
         </>
     )
 }

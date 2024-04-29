@@ -1,5 +1,5 @@
 import { updateToken } from "../utils";
-import { APIuser } from "./serviceApiUser.config";
+import { APIuser } from "../services/serviceApiUser.config";
 
 
 //! ------------------------------- REGISTER -----------------------------------

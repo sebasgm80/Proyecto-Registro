@@ -1,0 +1,42 @@
+/* Privace.css */
+.privacy-policy {
+    margin: 20px;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    font-family: Arial, sans-serif;
+    margin: 1rem;
+}
+
+.privacy-policy h1 {
+    color: #333;
+    font-size: 24px;
+}
+
+.privacy-policy h2 {
+    color: #666;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+.privacy-policy p {
+    color: #333;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-top: 10px;
+    text-align: justify;
+}
+
+.privacy-policy a {
+    color: #0077cc;
+    text-decoration: none;
+}
+
+.privacy-policy a:hover {
+    text-decoration: underline;
+}
+
+ul {
+    margin-left: 20px;
+}

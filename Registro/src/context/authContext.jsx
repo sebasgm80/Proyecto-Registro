@@ -1,42 +1,71 @@
 import { createContext, useContext, useMemo, useState } from "react";
 
-
-// Creamos el contexto
+// creamos el contexto
 const AuthContext = createContext();
 
-// Funcion que provee el contexto
+// funcion que provee el contexto
 export const AuthContextProvider = ({ children }) => {
 
-    // Crear el estado del usuario
+    // crear el estado del usuario
     const [ user, setUser ] = useState(() => {
-        const user = localStorage.getItem("user");
+        const user = localStorage.getItem('user');
         return user ? JSON.parse(user) : null;
     });
 
-    // Crear la funcion de login
+    // estado allUser que guarda la respuesta 200 ok del register
+    const [ allUser, setAllUser ] = useState({
+        data:{
+            confirmationCode: '',
+            user:{
+                password: '',
+                email: '',
+            },
+        },
+    });
+
+    // funcion puente --> para cuando tengamos problemas de asincronia
+    const bridgeData = (state) => {
+        const data = localStorage.getItem("data");
+        const dataJson = JSON.parse(data);
+        console.log(dataJson);
+        switch (state) {
+            case "ALLUSER":
+                setAllUser(dataJson);
+                localStorage.removeItem("data");
+                break;
+        
+            default:
+                break;
+        }
+    }
+
+    // funcion login
     const login = (data) => {
-        localStorage.setItem("user", data);
+        localStorage.setItem('user', data);
         const parseUser = JSON.stringify(data);
         setUser(parseUser);
     };
 
-    // Crear la funcion de logout
+    // funcion logout
     const logout = () => {
-        localStorage.removeItem("user");
+        localStorage.removeItem('user');
         setUser(null);
     };
 
-    // Crear el valor del contexto
+    // value --> memoriza los datos con useMemo
     const value = useMemo(() => ({
         user,
         setUser,
         login,
-        logout
-    }), [user]);
+        logout,
+        allUser,
+        setAllUser,
+        bridgeData,
+    }), [user, allUser]);
 
-    // Componente del contexto
+    // el componente del contexto
     return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 };
 
-// Usamos nuestr custom hook para usar el contexto
+// custom hook para usar el contexto
 export const useAuth = () => useContext(AuthContext);

@@ -1,6 +1,8 @@
-import { createBrowserRouter } from "react-router-dom";
-import App from "../App";
-import { CheckCode, Dashboard, ForgotPassword, Home, Login, Profile, Register } from "../pages";
+import { createBrowserRouter } from 'react-router-dom'
+import { App } from '../App'
+import { CheckCode, Dashboard, Error, ForgotPassword, FormProfile, Home, Login, Privace, Profile, Register, Terms } from '../pages'
+import { Protected, ProtectedCheckChildren } from '../components'
+
 
 export const router = createBrowserRouter([
     {
@@ -20,20 +22,51 @@ export const router = createBrowserRouter([
                 element: <Login />
             },
             {
-                path: "/profile",
-                element: <Profile />
+                path:'/profile',
+                element:(
+                    <Protected>
+                        <Profile />
+                    </Protected>
+                ),
+                children: [{
+                    path:'/profile',
+                    element: (
+                        <Protected>
+                            <FormProfile />
+                        </Protected>
+                    ),
+                }],
             },
             {
-                path: "/dashboard",
-                element: <Dashboard />
+                path:'/dashboard',
+                element:(
+                <Protected>
+                    <Dashboard />
+                </Protected>),
             },
             {
                 path: "/forgotPassword",
                 element: <ForgotPassword />
             },
             {
-                path: "/verifyCode",
-                element: <CheckCode />
+                path:'/verifyCode',
+                element:(
+                    <ProtectedCheckChildren>
+                        <CheckCode />
+                    </ProtectedCheckChildren>
+                ),
+            },
+            {
+                path: "/Privace",
+                element: <Privace />
+            },
+            {
+                path: "/terms",
+                element: <Terms />
+            },
+            {
+                path: "*",
+                element: <Error />
             }
         ]
 

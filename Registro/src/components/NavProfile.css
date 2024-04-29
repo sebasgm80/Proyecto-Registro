@@ -1,0 +1,52 @@
+.containerNavProfile {
+  display: flex;
+  justify-content:center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+
+  width: 100%;
+  
+}
+
+.iconNav {
+  width: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15%;
+  background-color: #8a86bc;
+  margin: 1rem;
+  cursor: pointer;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.iconNav:hover {
+  background-color: #6762b6;
+  transition: 0.3s;
+  transform: scale(1.01);
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+}
+
+.tooltip-text {
+  visibility: hidden;
+  width: auto;
+  background-color: black;
+  color: white;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.iconNav:hover + .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
